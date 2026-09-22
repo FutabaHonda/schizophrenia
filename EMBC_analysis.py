@@ -41,16 +41,16 @@ robustness analysis, not a newly fitted biological parameter.
 Example
 -------
 python run_neuro2026_results_and_sensitivity.py \
-  --isp_model run_isp_stas_0625_bar3_largefont.py \
-  --waltz_model run_waltz_0625_bar4_largefont.py \
+  --isp_model EMBC_isp.py \
+  --waltz_model EMBC_waltz.py \
   --out_dir neuro2026_results_sensitivity \
   --n_agents 50
 
 Quick smoke test
 ----------------
 python run_neuro2026_results_and_sensitivity.py \
-  --isp_model run_isp_stas_0625_bar3_largefont.py \
-  --waltz_model run_waltz_0625_bar4_largefont.py \
+  --isp_model EMBC_isp.py \
+  --waltz_model EMBC_waltz.py \
   --out_dir smoke_test --n_agents 2 --n_spines 400 \
   --spine_strength_grid 0.5 1.0 \
   --negative_learning_grid 0.35 1.0 --no_svg
@@ -144,13 +144,13 @@ def resolve_model_path(requested: str, kind: str) -> Path:
 
     if kind == "isp":
         patterns = [
-            "run_isp_stas_0625_bar3_largefont.py",
-            "run_isp_stas_0625_bar3_largefont*.py",
+            "EMBC_isp.py",
+            "EMBC_isp*.py",
         ]
     else:
         patterns = [
-            "run_waltz_0625_bar4_largefont.py",
-            "run_waltz_0625_bar4_largefont*.py",
+            "EMBC_waltz.py",
+            "EMBC_waltz*.py",
         ]
 
     candidates: List[Path] = []
@@ -666,12 +666,12 @@ def main() -> None:
     )
     ap.add_argument(
         "--isp_model",
-        default="run_isp_stas_0625_bar3_largefont.py",
+        default="EMBC_isp.py",
         help="Path to the current ISP model script.",
     )
     ap.add_argument(
         "--waltz_model",
-        default="run_waltz_0625_bar4_largefont.py",
+        default="EMBC_waltz.py",
         help="Path to the current reversal-learning model script.",
     )
     ap.add_argument(
